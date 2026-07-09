@@ -1535,12 +1535,7 @@
           return SUBJECT_CONFIG[node.subject].color;
         })
         .nodeVal(node => {
-          if (selectedNodeId) {
-            if (node.id === selectedNodeId) return 10;
-            if (prereqPathNodes.has(node.id) || unlockPathNodes.has(node.id)) return 5;
-            return 1.5;
-          }
-          // 根据节点的关联度（入度+出度）微调节点尺寸
+          // 根据节点的关联度（入度+出度）微调节点尺寸，选中前后保持一致，拒绝膨胀
           const inCount = incomingEdges.get(node.id).length;
           const outCount = outgoingEdges.get(node.id).length;
           return 2.5 + Math.sqrt(inCount + outCount) * 0.8;
@@ -1595,8 +1590,8 @@
           selectNode(node);
         });
 
-      // 调整相机角度，俯瞰漏斗
-      Graph.cameraPosition({ x: 0, y: 150, z: 650 });
+      // 调整相机角度，初始拉远2倍距离以使整体点云在视角中缩小一半，看起来更开阔精细
+      Graph.cameraPosition({ x: 0, y: 300, z: 1300 });
 
       // 开启默认缓慢自转交互特效
       const controls = Graph.controls();
@@ -1615,6 +1610,15 @@
       // 3. 微调电荷力（排斥力）和弹簧拉力
       Graph.d3Force('charge').strength(-40);
       Graph.d3Force('link').distance(40).strength(0.3);
+
+      // 4. 强制建立帧渲染循环来更新 OrbitControls，解决 3D 图谱静止后自转停止的 Bug
+      function animate() {
+        if (Graph) {
+          Graph.controls().update();
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
     }
 
     // 动态更新过滤
@@ -1666,8 +1670,8 @@
       Graph.linkColor(Graph.linkColor());
       Graph.linkDirectionalParticles(Graph.linkDirectionalParticles());
 
-      // 3. 相机平滑聚焦到该节点
-      const distance = 160;
+      // 3. 相机平滑聚焦到该节点，保持450的距离，使其只转到前面而不贴脸放大
+      const distance = 450;
       const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
       Graph.cameraPosition(
         { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // 相机目标位置
