@@ -1269,6 +1269,16 @@
       }
     }
 
+    // 判断节点适龄区间与激活年龄集是否有交集
+    function isNodeInAgeRange(node) {
+      const start = Math.floor(node.ageRangeStart);
+      const end = Math.ceil(node.ageRangeEnd);
+      for (let a = start; a <= end; a++) {
+        if (activeAges.has(a)) return true;
+      }
+      return false;
+    }
+
     // 动态生成并渲染年龄多选圆圈
     function renderAgeFilters() {
       const container = document.getElementById('age-circles-container');
@@ -1507,8 +1517,8 @@
     function build3DGraph() {
       const elem = document.getElementById('3d-graph');
       
-      // 过滤只显示激活的学科节点、激活的年龄节点和依赖线
-      const filteredNodes = topicsData.filter(node => activeSubjects.has(node.subject) && activeAges.has(Math.round(node.age)));
+      // 过滤只显示激活的学科节点、激活的年龄区间交集节点和依赖线
+      const filteredNodes = topicsData.filter(node => activeSubjects.has(node.subject) && isNodeInAgeRange(node));
       const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
       const filteredLinks = depsData.filter(link => 
         filteredNodeIds.has(link.topicId) && filteredNodeIds.has(link.prerequisiteId)
@@ -1593,11 +1603,6 @@
       // 调整相机角度，初始拉远2倍距离以使整体点云在视角中缩小一半，看起来更开阔精细
       Graph.cameraPosition({ x: 0, y: 300, z: 1300 });
 
-      // 开启默认缓慢自转交互特效
-      const controls = Graph.controls();
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.5;
-
       // --- D3 力导向引擎参数微调 (至关重要) ---
       // 1. 强制固定每个节点的 Y 坐标：高度代表学习年龄 (拉长至 130 缩放比)
       filteredNodes.forEach(node => {
@@ -1611,12 +1616,36 @@
       Graph.d3Force('charge').strength(-40);
       Graph.d3Force('link').distance(40).strength(0.3);
 
-      // 4. 强制建立帧渲染循环来更新 OrbitControls，解决 3D 图谱静止后自转停止的 Bug
+      // 4. 强制建立动画更新循环，以实现丝滑、在静止时依然正常运动的自转交互
+      // 动态读取当前用户的焦距高度和缩放比，自转过程中绝不强行重置用户的缩放与俯仰视角
+      let rotationAngle = 0;
+      let isUserInteracting = false;
+      let currentR = 1300; // 默认初始视距
+
+      const controls = Graph.controls();
+      controls.addEventListener('start', () => { isUserInteracting = true; });
+      controls.addEventListener('end', () => { isUserInteracting = false; });
+
       function animate() {
-        if (Graph) {
-          Graph.controls().update();
-        }
         requestAnimationFrame(animate);
+        
+        if (Graph && !selectedNodeId) {
+          const pos = Graph.cameraPosition();
+          const rXZ = Math.hypot(pos.x, pos.z) || 1e-6;
+          
+          if (isUserInteracting) {
+            // 用户拖拽时，实时读取并同步当前相机的极坐标角度、缩放视距，松手时无缝对接
+            rotationAngle = Math.atan2(pos.x, pos.z);
+            currentR = rXZ;
+          } else {
+            rotationAngle += 0.0012; // 缓慢匀速的自转速度
+            Graph.cameraPosition({
+              x: currentR * Math.sin(rotationAngle),
+              y: pos.y, // 保持用户当前的 Y 轴仰角高度
+              z: currentR * Math.cos(rotationAngle)
+            }, null, 0); // 0ms 瞬间设置相机坐标，避免与控制器的自带阻尼产生缓动冲突
+          }
+        }
       }
       animate();
     }
@@ -1626,17 +1655,17 @@
       if (!Graph) return;
 
       const filteredNodes = topicsData.filter(node => 
-        activeSubjects.has(node.subject) && activeAges.has(Math.round(node.age))
+        activeSubjects.has(node.subject) && isNodeInAgeRange(node)
       );
       const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
       const filteredLinks = depsData.filter(link => 
         filteredNodeIds.has(link.topicId) && filteredNodeIds.has(link.prerequisiteId)
       );
 
-      // 如果选中的节点所属学科或年龄被隐藏了，需要关闭详情
+      // 如果选中的节点所属学科或年龄区间被隐藏了，需要关闭详情
       if (selectedNodeId) {
         const selNode = nodesById.get(selectedNodeId);
-        if (!activeSubjects.has(selNode.subject) || !activeAges.has(Math.round(selNode.age))) {
+        if (!activeSubjects.has(selNode.subject) || !isNodeInAgeRange(selNode)) {
           closeDetailPanel();
         }
       }
@@ -1670,8 +1699,8 @@
       Graph.linkColor(Graph.linkColor());
       Graph.linkDirectionalParticles(Graph.linkDirectionalParticles());
 
-      // 3. 相机平滑聚焦到该节点，保持450的距离，使其只转到前面而不贴脸放大
-      const distance = 450;
+      // 3. 相机平滑聚焦到该节点，保持1300的距离，使其只扭转对齐到正前面聚焦而不拉近放大
+      const distance = 1300;
       const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
       Graph.cameraPosition(
         { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // 相机目标位置
