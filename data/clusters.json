@@ -1,0 +1,1104 @@
+{
+  "version": "v1",
+  "clusterCount": 183,
+  "clusters": [
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning the building blocks of writing — how to make complete sentences, use capital letters and punctuation marks correctly, and understand basic word types like nouns and verbs."
+    },
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning important grammar skills — understanding how to build more complex sentences, use punctuation correctly, and choose the right words to make their writing clearer and more interesting."
+    },
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning more sophisticated grammar — using irregular verbs and plurals correctly, punctuating speech, choosing the right pronouns and conjunctions, and understanding when to use different verb tenses."
+    },
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 8,
+      "summary": "Your child is mastering more sophisticated grammar — learning to use different verb tenses correctly, understanding how adjectives and adverbs work, and using punctuation to make their writing clearer and more varied."
+    },
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 9,
+      "summary": "Your child is mastering advanced grammar and punctuation — using complex sentence structures with relative clauses, understanding how to change word meanings with prefixes and suffixes, and creating cohesive, well-connected writing."
+    },
+    {
+      "subject": "English",
+      "domain": "Grammar & Punctuation",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning advanced grammar and punctuation skills — mastering complex sentence structures, sophisticated punctuation like colons and semi-colons, and formal writing techniques that will prepare them for secondary school and beyond."
+    },
+    {
+      "subject": "English",
+      "domain": "Handwriting & Transcription",
+      "ageRangeStart": 5,
+      "summary": "Your child is mastering the physical skills of writing — learning to form letters and numbers correctly, hold a pencil properly, and develop neat, legible handwriting."
+    },
+    {
+      "subject": "English",
+      "domain": "Handwriting & Transcription",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning to join letters together when writing, developing smooth handwriting by connecting letters with diagonal and horizontal strokes while keeping letters the right size."
+    },
+    {
+      "subject": "English",
+      "domain": "Phonics & Word Reading",
+      "ageRangeStart": 5,
+      "summary": "Your child is building the foundation for reading — learning how letters and sounds work together, recognizing common words by sight, and developing the skills to sound out new words independently."
+    },
+    {
+      "subject": "English",
+      "domain": "Phonics & Word Reading",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning to read more complex words by recognizing different letter patterns for the same sounds and breaking longer words into syllables, while also developing fluency and expression when reading aloud."
+    },
+    {
+      "subject": "English",
+      "domain": "Phonics & Word Reading",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning to read more complex words by understanding how prefixes, suffixes, and root words work together, helping them tackle unfamiliar words with confidence."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 5,
+      "summary": "Your child is building reading skills — understanding stories by identifying characters and events, asking questions about what they read, and connecting books to their own experiences."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 6,
+      "summary": "Your child is developing deeper reading skills — understanding how stories are structured, identifying main ideas in informational texts, comparing characters' perspectives, and recognising how different text features help organise information."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing deeper reading skills — identifying main ideas across multiple paragraphs, making inferences about characters and themes, and understanding how authors use language and text features to create meaning and effect."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to think deeply about texts — making connections between ideas, analysing characters' motivations, identifying central messages in stories, and distinguishing between their own viewpoint and that of authors or characters."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing sophisticated reading skills — analysing how authors structure texts, comparing different perspectives, understanding themes and literary devices, and integrating information from multiple sources."
+    },
+    {
+      "subject": "English",
+      "domain": "Reading Comprehension",
+      "ageRangeStart": 10,
+      "summary": "Your child is developing sophisticated reading skills — comparing texts, analysing how authors use evidence and perspective, integrating information from multiple sources, and supporting their interpretations with quotes and reasoning."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 5,
+      "summary": "Your child is developing essential communication skills — learning to listen carefully, speak clearly, participate in conversations, and express their thoughts and ideas confidently with others."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 6,
+      "summary": "Your child is building confidence in speaking aloud — memorising and performing poems with expression, and learning to speak clearly in complete sentences when presenting to others."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing confidence as a speaker and listener — learning to engage their audience, consider different viewpoints, and choose appropriate language for different situations."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 8,
+      "summary": "Your child is developing stronger discussion and presentation skills — learning to prepare for conversations, share ideas clearly, and present information in an organised way."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing critical listening skills, learning to identify key ideas from what they hear and evaluate whether speakers provide good reasons and evidence for their points."
+    },
+    {
+      "subject": "English",
+      "domain": "Speaking & Listening",
+      "ageRangeStart": 10,
+      "summary": "Your child is developing sophisticated communication skills — learning to adapt their speaking style for different audiences, participate thoughtfully in discussions, and create presentations that effectively combine spoken words with visual elements."
+    },
+    {
+      "subject": "English",
+      "domain": "Spelling & Word Study",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to spell by connecting sounds to letters — building simple words, adding common endings like -ing and -ed, and memorising important words that don't follow regular spelling patterns."
+    },
+    {
+      "subject": "English",
+      "domain": "Spelling & Word Study",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning more advanced spelling rules, including how to add suffixes that change the root word, use apostrophes correctly in contractions and possessives, and spell words with alternative letter patterns for familiar sounds."
+    },
+    {
+      "subject": "English",
+      "domain": "Spelling & Word Study",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning important spelling rules — using apostrophes correctly for possession, distinguishing between words that sound the same, and understanding how prefixes and suffixes work."
+    },
+    {
+      "subject": "English",
+      "domain": "Spelling & Word Study",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to spell words that come from other languages, understanding how Greek, French, and Latin origins affect the way English words are written."
+    },
+    {
+      "subject": "English",
+      "domain": "Spelling & Word Study",
+      "ageRangeStart": 9,
+      "summary": "Your child is tackling challenging spelling patterns — distinguishing between confusing word pairs, understanding Latin and French word endings, and mastering silent letters and complex suffixes."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 5,
+      "summary": "Your child is building their word knowledge — asking about unknown words, understanding opposites, recognising how word parts give clues to meaning, and using new vocabulary in their own speech and writing."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning how words are built and connected — discovering how root words change with different endings (like look/looks/looked) and learning to define words by describing what category they belong to and their key features."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning how language changes depending on who they're speaking to and the situation, while exploring how words are connected through shared roots and parts."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to understand figurative language — recognising when words don't mean exactly what they say and interpreting common phrases and idioms in stories and conversation."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing sophisticated language skills — understanding figurative language like metaphors and similes, learning word relationships through synonyms and antonyms, and using Greek and Latin word parts to figure out unfamiliar words."
+    },
+    {
+      "subject": "English",
+      "domain": "Vocabulary",
+      "ageRangeStart": 10,
+      "summary": "Your child is expanding their vocabulary skills by learning to choose the right words for different situations, understanding how language changes depending on whether they're speaking formally or informally."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to write their own stories and explanations — planning what to say, putting events in order, and sharing their writing with others for feedback."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning to write for different purposes beyond stories — including opinions, explanations, and poetry — while developing planning skills, building writing stamina, and learning to revise and proofread their work."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing as a writer — learning to organize their ideas into paragraphs, write engaging stories with developed characters, and edit their work to make it clearer and more effective."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 8,
+      "summary": "Your child is developing more sophisticated writing skills — choosing precise and vivid words to create specific effects, and learning to research topics and organise information from various sources."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing sophisticated writing skills — crafting clear, well-organised pieces for different audiences and purposes, and supporting their ideas with evidence from texts they've read."
+    },
+    {
+      "subject": "English",
+      "domain": "Writing Composition",
+      "ageRangeStart": 10,
+      "summary": "Your child is developing advanced writing skills — planning stories with well-developed characters, organising information clearly with headings and layouts, and learning to research and summarise information from different sources."
+    },
+    {
+      "subject": "History",
+      "domain": "Ancient Egypt",
+      "ageRangeStart": 5,
+      "summary": "Your child is exploring the fascinating world of ancient Egypt — discovering pyramids and pharaohs, learning about hieroglyphics and the River Nile, and understanding how archaeologists help us learn about the past."
+    },
+    {
+      "subject": "History",
+      "domain": "Ancient Egypt",
+      "ageRangeStart": 7,
+      "summary": "Your child is discovering the fascinating world of ancient Egypt — learning about pharaohs and pyramids, gods and mummification, hieroglyphs and daily life along the Nile River over 3,000 years of history."
+    },
+    {
+      "subject": "History",
+      "domain": "Ancient Egypt",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning about ancient Egyptian civilization in depth — exploring how pharaohs ruled as god-kings, how the economy and society functioned, and examining Egypt's remarkable achievements in art, architecture, and science that influenced the world for thousands of years."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 5,
+      "summary": "Your child is building a strong foundation in addition and subtraction, learning to combine and separate numbers up to 20 using objects, drawings, and mental strategies."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 6,
+      "summary": "Your child is building strong foundations in addition and subtraction — learning to add and subtract numbers fluently within 20, understanding the relationship between these operations, and applying various mental strategies to solve problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 7,
+      "summary": "Your child is advancing their calculation skills — learning to add and subtract larger numbers up to 1000, mastering mental math strategies, and solving more complex word problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 8,
+      "summary": "Your child is mastering more complex addition and subtraction — working with larger numbers up to four digits, solving multi-step word problems, and using formal written methods alongside mental strategies."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 9,
+      "summary": "Your child is mastering mental arithmetic with large numbers and using formal written methods for complex calculations, while learning to choose the most efficient method for different types of problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Addition & Subtraction",
+      "ageRangeStart": 10,
+      "summary": "Your child is mastering complex addition and subtraction — solving multi-step problems with large numbers and decimals, and choosing the best strategies to work out challenging calculations."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Algebra",
+      "ageRangeStart": 10,
+      "summary": "Your child is beginning to work with algebra — using letters to represent unknown numbers, creating and following rules for number patterns, and translating word problems into mathematical equations."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Counting & Cardinality",
+      "ageRangeStart": 5,
+      "summary": "Your child is building essential counting skills — learning that numbers have meaning, that each number represents a specific quantity, and beginning to compare groups to see which has more or fewer objects."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Counting & Cardinality",
+      "ageRangeStart": 6,
+      "summary": "Your child is building counting confidence — learning to skip count by 3s and count forwards and backwards in tens from any starting number."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Counting & Cardinality",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing counting confidence with larger numbers, practicing skip-counting patterns and counting up to 1000 by different amounts."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Counting & Cardinality",
+      "ageRangeStart": 8,
+      "summary": "Your child is practicing skip-counting in larger number patterns, building fluency with multiples of 6, 7, 9, 25, and 1000."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to organise and count information by sorting objects into groups and comparing which groups have more or fewer items."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning to work with data — creating and reading simple charts, graphs, and tables to organise information and answer questions about what the data shows."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning to create and read simple graphs — making picture graphs and bar charts to show information, then using these graphs to solve mathematical problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to collect information and present it visually using charts and graphs, then use these displays to solve problems and answer questions about the data."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning to work with data — reading timetables and graphs, and solving problems by interpreting the information presented in charts and line graphs."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Data & Statistics",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning to interpret and create different types of graphs and charts, and beginning to calculate averages to understand what data tells us about real-world situations."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering their first fractions — learning to recognise and name halves and quarters as equal parts of shapes, objects, and groups."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 6,
+      "summary": "Your child is beginning to understand fractions by dividing shapes and objects into equal parts, learning to recognize and write simple fractions like halves, quarters, and thirds."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 7,
+      "summary": "Your child is discovering fractions as parts of a whole — understanding halves, thirds, and quarters, placing fractions on number lines, and beginning to add and subtract simple fractions."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 8,
+      "summary": "Your child is developing a deeper understanding of fractions and decimals — learning to add and subtract fractions, convert between fractions and decimals, and use them to solve practical problems involving measurements and money."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring fractions, decimals, and percentages — understanding how they relate to each other, adding and subtracting fractions, and solving real-world problems involving these concepts."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Fractions",
+      "ageRangeStart": 10,
+      "summary": "Your child is mastering advanced fraction operations — adding, subtracting, and multiplying fractions with different denominators, dividing with fractions, and solving real-world problems using visual models and mathematical reasoning."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 5,
+      "summary": "Your child is exploring shapes and space — recognising circles, triangles, and squares, building with 3D shapes like cubes and spheres, and describing where things are using words like above, below, and beside."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 6,
+      "summary": "Your child is discovering the world of shapes — identifying properties of 2D and 3D shapes, learning how to combine shapes to make new ones, and describing positions and movements using mathematical language."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning about shapes, angles, and lines — identifying different types of angles and lines, drawing 2D shapes and building 3D models, and understanding how angles work as turns and properties of shapes."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 8,
+      "summary": "Your child is advancing their understanding of shapes and space — working with coordinates on grids, identifying different types of angles, exploring symmetry, and classifying shapes by their properties."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning to measure and work with angles using protractors, classify shapes by their properties, and understand transformations like reflections and translations while exploring how angles relate to each other."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Geometry",
+      "ageRangeStart": 10,
+      "summary": "Your child is developing advanced spatial skills — working with 3D shapes and nets, using coordinate grids with negative numbers, calculating angles, and understanding geometric transformations like reflection and translation."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 5,
+      "summary": "Your child is beginning to think like a mathematician — using objects and pictures to solve problems, explaining their reasoning, noticing patterns, and connecting maths to real-world situations."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 6,
+      "summary": "Your child is developing mathematical reasoning skills — learning to plan approaches to problems, explain their thinking clearly, spot patterns, and connect real-world situations to mathematical solutions."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning to think like a mathematician — solving multi-step problems, explaining their reasoning, recognising patterns in numbers, and choosing the best tools and strategies for different mathematical challenges."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 8,
+      "summary": "Your child is developing strong mathematical reasoning skills — learning to explain their thinking clearly, spot patterns and connections, and choose the best strategies for solving complex problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing advanced problem-solving skills, learning to choose the best mathematical tools and methods for complex problems, and communicating their mathematical reasoning clearly."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Mathematical Thinking",
+      "ageRangeStart": 10,
+      "summary": "Your child is developing advanced mathematical reasoning skills — learning to construct logical arguments, make connections between different mathematical concepts, and solve complex real-world problems involving fractions, algebra, and ratio."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning about measurement in everyday life — telling time to the hour and half-hour, comparing lengths and weights of objects, understanding money, and using time words like yesterday and tomorrow."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning practical measurement skills — reading clocks to five-minute intervals, measuring length and capacity using standard units, and working with money including making change."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning practical measurement skills — using rulers and other tools to measure length, weight, and volume accurately, working with money, and telling time to the nearest minute."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to measure the world around them — calculating areas and perimeters, converting between different units like metres and kilometres, and solving time problems using both analogue and digital clocks."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 9,
+      "summary": "Your child is mastering advanced measurement skills — calculating area and perimeter of shapes, working with fractions in measurements, converting between different units, and solving real-world problems involving distance, time, and volume."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Measurement",
+      "ageRangeStart": 10,
+      "summary": "Your child is mastering advanced measurement skills — calculating volume and area using formulas, converting between different units of measurement, and solving real-world problems involving length, mass, and capacity."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 5,
+      "summary": "Your child is being introduced to multiplication and division as ways of working with equal groups — understanding multiplication as repeated addition and division as sharing equally."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 6,
+      "summary": "Your child is building the foundations of multiplication and division — learning their 2, 5, and 10 times tables, understanding what these operations mean, and solving problems using arrays and repeated addition."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 7,
+      "summary": "Your child is mastering multiplication and division — learning their times tables (especially 3, 4, and 8), understanding how multiplication connects to arrays and repeated addition, and solving word problems involving these operations."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 8,
+      "summary": "Your child is building fluency with multiplication and division — memorizing times tables up to 12×12, understanding the relationship between multiplication and division, and solving word problems involving equal groups and arrays."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 9,
+      "summary": "Your child is mastering more complex multiplication and division — working with larger numbers, understanding factors and multiples, solving multi-step problems, and beginning to use formal written methods."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Multiplication & Division",
+      "ageRangeStart": 10,
+      "summary": "Your child is advancing to sophisticated multiplication and division — using formal written methods for complex calculations, working with decimals, and applying the order of operations to solve multi-step problems."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 5,
+      "summary": "Your child is building number foundations — learning to read and write numbers up to 100, understanding number words, and beginning to see how numbers are built from tens and ones."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning how numbers work by understanding place value — discovering that in two-digit numbers, each digit has a different value depending on whether it represents tens or ones."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 7,
+      "summary": "Your child is mastering larger numbers — learning to read, write, and work with numbers up to 1000 by understanding how hundreds, tens, and ones work together."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 8,
+      "summary": "Your child is working with larger numbers up to 10,000 — understanding place value in four-digit numbers, learning to round numbers, and exploring negative numbers and Roman numerals."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 9,
+      "summary": "Your child is working with larger numbers up to 1 million — understanding place value, rounding to different levels of accuracy, and beginning to work with negative numbers in everyday contexts."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Number Representation & Place Value",
+      "ageRangeStart": 10,
+      "summary": "Your child is mastering large numbers and decimals — reading, writing, and comparing numbers up to 10 million, understanding how decimal places work, and using negative numbers in real-world contexts like temperature and money."
+    },
+    {
+      "subject": "Mathematics",
+      "domain": "Ratio & Proportion",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning to compare quantities and solve problems involving ratios, proportions, percentages, and scale — essential skills for understanding relationships between numbers in real-world contexts."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Emotional Literacy",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning about emotions — naming different feelings, understanding that everyone has emotions, expressing feelings with words instead of actions, and recognising what triggers their emotions."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Emotional Literacy",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing a deeper understanding of emotions — learning more specific emotion words, recognising how feelings vary in intensity, and understanding the connection between emotions and physical sensations in their body."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Emotional Literacy",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing deeper emotional understanding — recognising complex and mixed feelings, understanding how emotions influence decisions, and reflecting on their own emotional patterns and growth over time."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Empathy & Social Awareness",
+      "ageRangeStart": 5,
+      "summary": "Your child is developing emotional intelligence and social skills — learning to show kindness to others, appreciating diversity in their community, and understanding that people have different thoughts and feelings."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Empathy & Social Awareness",
+      "ageRangeStart": 7,
+      "summary": "Your child is developing empathy and understanding of fairness — learning to see situations from others' perspectives, recognising that everyone has different experiences and challenges, and understanding that being fair sometimes means giving people what they need rather than everyone getting the same thing."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Empathy & Social Awareness",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing deeper understanding of fairness and diversity — learning to recognise stereotypes and bias, understanding how prejudice affects people, and appreciating the value of different cultures and perspectives."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Friendship & Cooperation",
+      "ageRangeStart": 5,
+      "summary": "Your child is developing essential friendship skills — learning to ask for help when needed, understanding what makes a good friend, listening to others properly, and sharing and taking turns in group activities."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Friendship & Cooperation",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning that friendships naturally change over time and developing skills to work well in groups, resolve disagreements peacefully, and understand different roles people play in teamwork."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Friendship & Cooperation",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing advanced social skills — learning to communicate assertively, help resolve conflicts between friends, reflect on their own behaviour in relationships, and give and receive helpful feedback."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Responsible Decision-Making",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to make good choices — understanding right from wrong, keeping themselves safe, thinking about consequences, and following rules because they understand why they matter."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Responsible Decision-Making",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning to make thoughtful choices and stand up for what's right — understanding bullying and digital citizenship, developing the courage to be an upstander, and using a thinking process before making decisions."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Responsible Decision-Making",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning to navigate peer pressure and understand their rights and responsibilities in communities, while developing skills to think through ethical dilemmas from multiple perspectives."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Self-Regulation & Resilience",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning important life skills for managing emotions and challenges — using calming strategies when upset, practising patience, adapting to changes, and understanding that mistakes are a normal part of learning."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Self-Regulation & Resilience",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning that they can get better at things through practice and effort, while developing strategies to stay positive and break big challenges into smaller, manageable steps."
+    },
+    {
+      "subject": "Personal & Social Development",
+      "domain": "Self-Regulation & Resilience",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing important life skills — learning to manage their emotions and behavior, set and work toward goals, and build resilience to bounce back from challenges and setbacks."
+    },
+    {
+      "subject": "Science",
+      "domain": "Animals of the World",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering the amazing diversity of animals around the world — learning how they have babies, find shelter, use camouflage, and adapt to different environments from deserts to polar regions."
+    },
+    {
+      "subject": "Science",
+      "domain": "Animals of the World",
+      "ageRangeStart": 7,
+      "summary": "Your child is exploring the amazing diversity of animals around the world, learning how different creatures communicate, migrate, hunt and survive in various habitats from rainforests to deserts to polar regions."
+    },
+    {
+      "subject": "Science",
+      "domain": "Animals of the World",
+      "ageRangeStart": 9,
+      "summary": "Your child is discovering how animals have evolved amazing adaptations to survive in their environments, exploring complex animal behaviors and intelligence, and learning about conservation efforts to protect endangered species and biodiversity."
+    },
+    {
+      "subject": "Science",
+      "domain": "Dinosaurs & Paleontology",
+      "ageRangeStart": 5,
+      "summary": "Your child is exploring the fascinating world of dinosaurs — learning about different species, understanding what fossils tell us about these ancient creatures, and discovering how scientists study life from long ago."
+    },
+    {
+      "subject": "Science",
+      "domain": "Dinosaurs & Paleontology",
+      "ageRangeStart": 7,
+      "summary": "Your child is becoming a young paleontologist — learning how fossils form, what they tell us about ancient life, and discovering fascinating facts about dinosaurs and the scientists who study them."
+    },
+    {
+      "subject": "Science",
+      "domain": "Dinosaurs & Paleontology",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring how scientists study dinosaurs through fossils — learning about dinosaur classification, evolution into birds, extinction events, and how paleontologists uncover and interpret evidence from millions of years ago."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth & Human Activity",
+      "ageRangeStart": 5,
+      "summary": "Your child is exploring how humans interact with the environment — learning about weather patterns, how animals and plants depend on their habitats, and ways we can protect our local environment."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth & Human Activity",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning how to solve real-world problems — designing solutions to protect people and property from weather hazards like floods, storms, and extreme temperatures."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth & Human Activity",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning about natural disasters and environmental impact — exploring how we can protect ourselves from earthquakes and floods, and understanding how our energy use affects the planet."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth & Human Activity",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning how science helps communities protect our planet by exploring different ways people use scientific knowledge to conserve Earth's resources and protect the environment."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth's Systems",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to observe and describe weather patterns and seasons, while exploring how plants and animals change their environment to meet their needs."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth's Systems",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning about Earth's structure — exploring different types of rocks and soil, understanding where water is found on our planet, and discovering how land shapes change over time."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth's Systems",
+      "ageRangeStart": 8,
+      "summary": "Your child is exploring weather and climate by collecting and displaying weather data, learning to distinguish between daily weather patterns and long-term climate conditions in different regions around the world."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth's Systems",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning how Earth's surface changes over time — studying how wind, water, and ice shape our landscape through weathering and erosion, and interpreting maps to understand geological patterns."
+    },
+    {
+      "subject": "Science",
+      "domain": "Earth's Systems",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning about Earth as a connected system, exploring how water is distributed across our planet and how the land, water, air, and living things all interact with each other."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ecosystems & Habitats",
+      "ageRangeStart": 6,
+      "summary": "Your child is exploring how living things interact with their environment — learning about different habitats, simple food chains, and the difference between living, dead, and never-alive things."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ecosystems & Habitats",
+      "ageRangeStart": 8,
+      "summary": "Your child is exploring how living things interact with each other and their environments — understanding food chains, animal groupings, and how scientists classify and identify different species in nature."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ecosystems & Habitats",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning about how living things reproduce and grow — comparing different life cycles from mammals to insects, and understanding the various ways plants and animals create new generations."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ecosystems & Habitats",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning how scientists classify living things into groups based on their characteristics and understanding how matter moves through ecosystems as plants, animals, and decomposers interact with their environment."
+    },
+    {
+      "subject": "Science",
+      "domain": "Energy",
+      "ageRangeStart": 5,
+      "summary": "Your child is beginning to understand energy — observing how sunlight warms objects and surfaces, and designing simple structures to create shade and reduce warming effects."
+    },
+    {
+      "subject": "Science",
+      "domain": "Energy",
+      "ageRangeStart": 8,
+      "summary": "Your child is discovering how electricity works — building simple circuits with batteries and bulbs, understanding how switches control electrical flow, and learning which materials conduct electricity and which don't."
+    },
+    {
+      "subject": "Science",
+      "domain": "Energy",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring how energy works — understanding how it moves between objects, changes from one form to another, and can be transferred through sound, light, heat, and electricity."
+    },
+    {
+      "subject": "Science",
+      "domain": "Energy",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning how electricity works in circuits — understanding how batteries power different components like bulbs and buzzers, and how to draw circuit diagrams using proper symbols."
+    },
+    {
+      "subject": "Science",
+      "domain": "Forces & Motion",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning about forces — understanding how pushes and pulls can make objects move faster, slower, or change direction, and testing different ways to affect motion."
+    },
+    {
+      "subject": "Science",
+      "domain": "Forces & Motion",
+      "ageRangeStart": 7,
+      "summary": "Your child is exploring forces around them — discovering how magnets work, understanding that some forces need contact while others work at a distance, and investigating how different surfaces affect how things move."
+    },
+    {
+      "subject": "Science",
+      "domain": "Forces & Motion",
+      "ageRangeStart": 8,
+      "summary": "Your child is investigating how forces affect movement — observing patterns in how objects move and conducting experiments to understand how balanced and unbalanced forces change an object's motion."
+    },
+    {
+      "subject": "Science",
+      "domain": "Forces & Motion",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning about gravity and forces that resist motion like friction and air resistance, while discovering how simple machines like levers and pulleys can make tasks easier."
+    },
+    {
+      "subject": "Science",
+      "domain": "Heredity & Evolution",
+      "ageRangeStart": 6,
+      "summary": "Your child is observing how baby animals and plants are similar to their parents but also unique — beginning to understand the basic concept of inherited traits and individual differences."
+    },
+    {
+      "subject": "Science",
+      "domain": "Heredity & Evolution",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning how traits are passed from parents to offspring, how environmental factors can influence characteristics, and how variations in traits help species survive and evolve over time, using fossil evidence to understand life in the past."
+    },
+    {
+      "subject": "Science",
+      "domain": "Heredity & Evolution",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning about life on Earth over time — understanding how living things have changed throughout history and how fossils help us learn about ancient organisms."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 5,
+      "summary": "Your child is exploring the materials around them — identifying different substances like wood, plastic, and metal, and discovering their properties such as whether they're hard or soft, rough or smooth."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 6,
+      "summary": "Your child is exploring how materials behave — investigating how solid objects can be changed by bending, twisting, or stretching, and learning why different materials are chosen for different jobs."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 7,
+      "summary": "Your child is investigating how materials behave — classifying substances by their properties, understanding why different materials are used for specific purposes, and exploring how heating and cooling can change materials."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 8,
+      "summary": "Your child is exploring states of matter — learning to identify solids, liquids, and gases, and discovering how water changes form through evaporation and condensation."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring how materials behave and change — investigating which substances dissolve in water, learning to separate mixtures, and distinguishing between changes that can be reversed and those that create entirely new materials."
+    },
+    {
+      "subject": "Science",
+      "domain": "Matter & Materials",
+      "ageRangeStart": 10,
+      "summary": "Your child is exploring the fundamental nature of matter — learning that everything is made of tiny particles they can't see, and discovering that matter is conserved even when it changes form through heating, cooling, or mixing."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ocean Life",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering ocean life — learning about the amazing variety of sea creatures, how they depend on each other for food, and exploring special ocean habitats like rock pools and coral reefs."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ocean Life",
+      "ageRangeStart": 7,
+      "summary": "Your child is diving deeper into ocean science — learning how sea creatures are classified, understanding complex ocean food webs, and exploring the different zones and features of our vast oceans."
+    },
+    {
+      "subject": "Science",
+      "domain": "Ocean Life",
+      "ageRangeStart": 9,
+      "summary": "Your child is diving into ocean science — learning about marine ecosystems, animal migrations, how human activities affect the ocean, and the vital role oceans play in Earth's climate."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning about the amazing diversity of life — identifying different animals and plants, understanding how body parts help animals survive, and discovering what all living things need to stay alive."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 6,
+      "summary": "Your child is discovering how living things grow — observing how seeds become plants, understanding what plants need to thrive, and exploring how animals develop from babies to adults."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 7,
+      "summary": "Your child is diving deeper into how living things work — understanding plant life cycles from flower to seed, discovering how plants transport water, and learning about the important roles of skeletons, muscles, and proper nutrition."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 8,
+      "summary": "Your child is discovering how the human body works — learning about the digestive system and how different types of teeth help us eat and break down food."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning how plant and animal body parts help them survive and grow, while exploring the human life cycle and how our senses help us understand and respond to the world."
+    },
+    {
+      "subject": "Science",
+      "domain": "Organisms & Life Processes",
+      "ageRangeStart": 10,
+      "summary": "Your child is exploring how living things get and use energy — from understanding how plants make food from sunlight and air, to learning about the human circulatory system and how lifestyle choices affect our bodies."
+    },
+    {
+      "subject": "Science",
+      "domain": "Scientific Inquiry",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning to be a young scientist — asking questions, making careful observations, recording what they see in simple charts and drawings, and testing ideas to find answers."
+    },
+    {
+      "subject": "Science",
+      "domain": "Scientific Inquiry",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning to think and work like a scientist by setting up fair tests, making careful observations and measurements, recording data in charts and tables, and drawing conclusions from their investigations."
+    },
+    {
+      "subject": "Science",
+      "domain": "Scientific Inquiry",
+      "ageRangeStart": 8,
+      "summary": "Your child is learning to think like an engineer — designing solutions to problems, planning fair tests, and improving their ideas based on what works best."
+    },
+    {
+      "subject": "Science",
+      "domain": "Scientific Inquiry",
+      "ageRangeStart": 9,
+      "summary": "Your child is developing advanced scientific investigation skills — planning fair tests, taking precise measurements, recording complex data, and evaluating evidence to draw reliable conclusions."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Exploration",
+      "ageRangeStart": 5,
+      "summary": "Your child is beginning their journey into space science — learning about astronauts and the Moon's phases, identifying objects in the sky, and discovering that we live in a solar system with other planets."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Exploration",
+      "ageRangeStart": 7,
+      "summary": "Your child is discovering how our solar system works — learning about Earth's movements that create day and night, exploring the eight planets and their features, and understanding how we use robots and telescopes to study space."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Exploration",
+      "ageRangeStart": 9,
+      "summary": "Your child is discovering the wonders of space — learning about stars, planets, and galaxies, understanding how our ideas about the solar system have changed over time, and exploring humanity's journey into space."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Systems & Earth's History",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering how daylight changes throughout the year by observing that days are longer in summer and shorter in winter."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Systems & Earth's History",
+      "ageRangeStart": 6,
+      "summary": "Your child is learning about predictable patterns in the sky — observing how the sun rises and sets daily, how the moon changes shape, and how stars appear at night."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Systems & Earth's History",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning that Earth changes over time — some changes happen quickly like earthquakes and volcanoes, while others like erosion and mountain building take millions of years."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Systems & Earth's History",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring our solar system and Earth's place in it — understanding how the Earth's rotation creates day and night, how planets orbit the sun, and how we can read Earth's history through rocks and fossils."
+    },
+    {
+      "subject": "Science",
+      "domain": "Space Systems & Earth's History",
+      "ageRangeStart": 10,
+      "summary": "Your child is exploring how Earth fits into the solar system — understanding why the sun appears brighter than distant stars and observing patterns in shadows, day and night cycles, and seasonal changes in the sky."
+    },
+    {
+      "subject": "Science",
+      "domain": "The Human Body",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering how their amazing body works — learning about the heart, lungs, brain, skeleton, and five senses, plus understanding what their body needs to stay healthy and strong."
+    },
+    {
+      "subject": "Science",
+      "domain": "The Human Body",
+      "ageRangeStart": 7,
+      "summary": "Your child is discovering how their body works — learning about different types of teeth, how food travels through the digestive system, how bones and muscles work together, and understanding the importance of a balanced diet."
+    },
+    {
+      "subject": "Science",
+      "domain": "The Human Body",
+      "ageRangeStart": 9,
+      "summary": "Your child is discovering how their body works — exploring the respiratory, circulatory, and nervous systems in detail, and understanding how lifestyle choices affect their health and development."
+    },
+    {
+      "subject": "Science",
+      "domain": "Volcanoes & Earthquakes",
+      "ageRangeStart": 5,
+      "summary": "Your child is learning about powerful forces that shape our Earth — understanding what volcanoes and earthquakes are, how they change the landscape, and important safety rules to follow during earthquakes."
+    },
+    {
+      "subject": "Science",
+      "domain": "Volcanoes & Earthquakes",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning about what's inside volcanoes and earthquakes, how Earth has different layers, and exploring dramatic geological events like the story of Pompeii and tsunamis."
+    },
+    {
+      "subject": "Science",
+      "domain": "Volcanoes & Earthquakes",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring how Earth's powerful forces work — understanding what causes volcanoes and earthquakes, how scientists monitor them, and how communities prepare for these natural events."
+    },
+    {
+      "subject": "Science",
+      "domain": "Waves, Light & Sound",
+      "ageRangeStart": 6,
+      "summary": "Your child is investigating light and sound — discovering how we see objects, experimenting with transparent and opaque materials, and learning how vibrations create sound."
+    },
+    {
+      "subject": "Science",
+      "domain": "Waves, Light & Sound",
+      "ageRangeStart": 7,
+      "summary": "Your child is discovering how light behaves — learning that sunlight can be dangerous to eyes, understanding how shadows form when light is blocked, and observing how different surfaces reflect light."
+    },
+    {
+      "subject": "Science",
+      "domain": "Waves, Light & Sound",
+      "ageRangeStart": 8,
+      "summary": "Your child is discovering how sound works — understanding that sounds are vibrations that travel through air, water, and solids, and exploring how pitch and volume relate to the strength of these vibrations."
+    },
+    {
+      "subject": "Science",
+      "domain": "Waves, Light & Sound",
+      "ageRangeStart": 9,
+      "summary": "Your child is learning how light allows us to see objects and how waves work, including exploring different ways to send information using patterns and codes."
+    },
+    {
+      "subject": "Science",
+      "domain": "Waves, Light & Sound",
+      "ageRangeStart": 10,
+      "summary": "Your child is learning how light travels in straight lines and using this understanding to explain everyday phenomena like how we see things and why shadows match the shape of objects that cast them."
+    },
+    {
+      "subject": "Science",
+      "domain": "Weather & Climate",
+      "ageRangeStart": 5,
+      "summary": "Your child is discovering how weather works — learning about different types of weather, how to stay safe during storms, and understanding how weather patterns change with the seasons."
+    },
+    {
+      "subject": "Science",
+      "domain": "Weather & Climate",
+      "ageRangeStart": 7,
+      "summary": "Your child is learning about weather science — how meteorologists forecast weather, what causes different weather patterns like wind and storms, and understanding the water cycle that brings us rain and snow."
+    },
+    {
+      "subject": "Science",
+      "domain": "Weather & Climate",
+      "ageRangeStart": 9,
+      "summary": "Your child is exploring how the Sun drives weather patterns and creates different climate zones around Earth, learning about extreme weather events, climate change, and how people design solutions to protect communities from weather hazards."
+    }
+  ]
+}

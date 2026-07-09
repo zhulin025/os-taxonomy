@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://withmarble.com/taxonomy/schema/topics.schema.json",
+  "title": "Marble Skill Taxonomy — topics",
+  "type": "object",
+  "required": ["version", "topicCount", "topics"],
+  "properties": {
+    "version": { "type": "string" },
+    "topicCount": { "type": "integer", "minimum": 0 },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "subject", "name", "description", "evidence", "standards"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^mt_" },
+          "type": {
+            "type": "string",
+            "enum": ["CONCEPTUAL", "PROCEDURAL", "REPRESENTATIONAL", "LANGUAGE", "META"]
+          },
+          "subject": { "type": "string" },
+          "domain": { "type": ["string", "null"] },
+          "name": { "type": ["string", "null"] },
+          "description": { "type": "string" },
+          "ageRangeStart": { "type": ["integer", "null"] },
+          "ageRangeEnd": { "type": ["integer", "null"] },
+          "centrality": { "type": ["number", "null"] },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "assessmentPrompt": { "type": ["string", "null"] },
+          "standards": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

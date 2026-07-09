@@ -1,0 +1,12 @@
+{
+  "name": "marble-taxonomy",
+  "version": "1.0.0",
+  "description": "An open, graph-structured taxonomy of primary/elementary learning.",
+  "private": true,
+  "type": "module",
+  "license": "(ODbL-1.0 AND CC-BY-SA-4.0)",
+  "homepage": "https://withmarble.com",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  }
+}

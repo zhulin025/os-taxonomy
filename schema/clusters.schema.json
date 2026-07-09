@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://withmarble.com/taxonomy/schema/clusters.schema.json",
+  "title": "Marble Skill Taxonomy — clusters",
+  "type": "object",
+  "required": ["version", "clusterCount", "clusters"],
+  "properties": {
+    "version": { "type": "string" },
+    "clusterCount": { "type": "integer", "minimum": 0 },
+    "clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["subject", "domain", "ageRangeStart", "summary"],
+        "properties": {
+          "subject": { "type": "string" },
+          "domain": { "type": "string" },
+          "ageRangeStart": { "type": "integer" },
+          "summary": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

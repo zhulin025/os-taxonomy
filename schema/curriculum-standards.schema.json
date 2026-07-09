@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://withmarble.com/taxonomy/schema/curriculum-standards.schema.json",
+  "title": "Marble Skill Taxonomy — curriculum standards",
+  "type": "object",
+  "required": ["curriculumCount", "curricula"],
+  "properties": {
+    "note": { "type": "string" },
+    "codesOnlySources": { "type": "array", "items": { "type": "string" } },
+    "curriculumCount": { "type": "integer", "minimum": 0 },
+    "curricula": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "country", "name", "version", "textIncluded", "topicCount", "topics"],
+        "properties": {
+          "slug": { "type": "string" },
+          "country": { "type": "string" },
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "sourceUrl": { "type": ["string", "null"] },
+          "textIncluded": { "type": "boolean" },
+          "license": { "type": "string" },
+          "topicCount": { "type": "integer", "minimum": 0 },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["key", "code"],
+              "properties": {
+                "key": { "type": "string" },
+                "code": { "type": "string" },
+                "data": { "type": "object" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
