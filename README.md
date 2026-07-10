@@ -8,7 +8,7 @@
 
 ---
 
-![页面截图](media/layout.png)
+![效果展示](media/layout.GIF)
 
 ## 3D 可视化系统核心功能与特色
 
@@ -45,7 +45,7 @@
    - **学科过滤器**：左侧显示 8 大学科的实时节点数量，点击可瞬间隐藏/开启对应分类。
    - **年龄段过滤器**：提供 4-13 岁细粒度的圆圈数字刻度盘，支持高亮和多选，并配有快捷区间筛选。
 
-6. **100% 静态资源本地化**：
+7. **100% 静态资源本地化**：
    - 彻底移除了外部 Google 字体和 slow-loading 的 `unpkg.com` 库依赖，全部 `three.min.js` 与 `3d-force-graph.min.js` 依赖库均离线保存在本地 `lib/` 目录。系统在无网络环境下也能实现秒开。
 
 ---
@@ -60,6 +60,7 @@
 # 使用 Python 启动本地 Web 服务器 (内置端口自动避让)
 python3 server.py
 ```
+
 - `server.py` 在运行后默认会监听 `8000` 端口。
 - **端口避让**：若 `8000` 端口已被其他服务占用，脚本将自动探测并依次绑定至 `8001` - `8099` 之间可用的第一个端口，极大增强了启动稳定性。
 
@@ -78,11 +79,11 @@ python3 server.py
 
 所有结构化数据文件以 JSON 格式存储在 [`data/`](data/) 目录中：
 
-* [`data/topics.json`](data/topics.json)：图谱中的所有**节点**数据（包括主题名称、分类、描述、适用年龄、达标考核证据标准等）。
-* [`data/dependencies.json`](data/dependencies.json)：图谱中的所有**边**数据（定义 `topicId` 依赖于哪一个 `prerequisiteId`）。
-* [`data/curriculum-standards.json`](data/curriculum-standards.json)：对齐的国家课程标准详情（如 CCSS, NGSS, UK-NC 等）。
-* [`data/clusters.json`](data/clusters.json)：各个学科及年龄段的亲子大纲汇总。
-* [`data/manifest.json`](data/manifest.json)：数据集的校验指纹与统计数据。
+- [`data/topics.json`](data/topics.json)：图谱中的所有**节点**数据（包括主题名称、分类、描述、适用年龄、达标考核证据标准等）。
+- [`data/dependencies.json`](data/dependencies.json)：图谱中的所有**边**数据（定义 `topicId` 依赖于哪一个 `prerequisiteId`）。
+- [`data/curriculum-standards.json`](data/curriculum-standards.json)：对齐的国家课程标准详情（如 CCSS, NGSS, UK-NC 等）。
+- [`data/clusters.json`](data/clusters.json)：各个学科及年龄段的亲子大纲汇总。
+- [`data/manifest.json`](data/manifest.json)：数据集的校验指纹与统计数据。
 
 ### 数据完整性校验
 
@@ -107,6 +108,6 @@ node scripts/validate.mjs
 
 根据 ODbL 1.0 与 CC BY-SA 4.0 协议要求，任何使用、分发或衍生本图谱项目的作品**必须包含以下版权信息及声明**：
 
-> Marble Skill Taxonomy (v1) · © Generative Spark, Inc. (Marble) · https://withmarble.com · licensed under ODbL 1.0 (database) and CC BY-SA 4.0 (content).
+> Marble Skill Taxonomy (v1) · © Generative Spark, Inc. (Marble) · <https://withmarble.com> · licensed under ODbL 1.0 (database) and CC BY-SA 4.0 (content).
 
 同时需保留 [PROVENANCE.md](PROVENANCE.md) 中的国家标准上游版权声明。如在学术或工程报告中引用，请参考 [CITATION.cff](CITATION.cff) 的标准文献格式。
