@@ -952,6 +952,18 @@
       height: 14px;
       fill: currentColor;
     }
+
+    /* HTML 节点悬浮框（大小固定，不随 3D 缩放变形） */
+    .html-node-label-panel {
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
@@ -1294,13 +1306,14 @@
           node.y = (age - 8.5) * 130;
           node.fy = node.y; // 固定 Y 坐标，使得高度代表学习年龄
           
-          // 预先生成随机星云坐标
-          const nebAngle = Math.random() * Math.PI * 2;
-          const nebPhi = Math.acos(Math.random() * 2 - 1);
-          const nebR = Math.random() * 400 + 80;
-          node.nebulaX = nebR * Math.sin(nebPhi) * Math.cos(nebAngle);
-          node.nebulaY = nebR * Math.cos(nebPhi);
-          node.nebulaZ = nebR * Math.sin(nebPhi) * Math.sin(nebAngle);
+          // 环状状态（游泳圈状 Torus）坐标生成 (New in v1.1)
+          const R = 320; // 游泳圈主半径
+          const rRing = 70;  // 游泳圈管半径
+          const theta = Math.random() * Math.PI * 2; // 绕大环的角度
+          const phi = Math.random() * Math.PI * 2;   // 绕小管的角度
+          node.ringX = (R + rRing * Math.cos(phi)) * Math.cos(theta);
+          node.ringZ = (R + rRing * Math.cos(phi)) * Math.sin(theta);
+          node.ringY = rRing * Math.sin(phi);
           
           nodesById.set(node.id, node);
           incomingEdges.set(node.id, []);
@@ -1564,85 +1577,119 @@
       return `rgba(${r}, ${g}, ${b}, ${opacity})`;
     }
 
-    // 高亮节点三维标签绘制（Sprite 面向相机）
-    function createTextLabel(text, color) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      ctx.font = 'Bold 28px "PingFang SC", "Microsoft YaHei", sans-serif';
-      const textWidth = ctx.measureText(text).width;
-      canvas.width = textWidth + 24;
-      canvas.height = 48;
+    // 网页级 2D HTML 悬浮文字标签渲染（复刻 Hover 节点悬浮框）
+    function updateHtmlLabels() {
+      const container = document.getElementById('html-labels-container');
+      if (!container) return;
+      container.innerHTML = '';
       
-      ctx.font = 'Bold 28px "PingFang SC", "Microsoft YaHei", sans-serif';
-      ctx.fillStyle = 'rgba(10, 15, 30, 0.85)';
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-      ctx.lineWidth = 2;
+      if (!selectedNodeId) return;
       
-      // 绘制圆角矩形
-      ctx.beginPath();
-      const x = 2, y = 2, w = canvas.width - 4, h = canvas.height - 4, r = 8;
-      ctx.moveTo(x + r, y);
-      ctx.arcTo(x + w, y, x + w, y + h, r);
-      ctx.arcTo(x + w, y + h, x, y + h, r);
-      ctx.arcTo(x, y + h, x, y, r);
-      ctx.arcTo(x, y, x + w, y, r);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
+      // 收集当前需要展示标签的高亮关联节点
+      const relatedNodes = [];
+      const activeSelNode = nodesById.get(selectedNodeId);
+      if (activeSelNode) relatedNodes.push(activeSelNode);
       
-      ctx.fillStyle = color;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+      prereqPathNodes.forEach(id => {
+        const n = nodesById.get(id);
+        if (n) relatedNodes.push(n);
+      });
       
-      const texture = new THREE.CanvasTexture(canvas);
-      const spriteMaterial = new THREE.SpriteMaterial({ map: texture, transparent: true });
-      const sprite = new THREE.Sprite(spriteMaterial);
-      sprite.scale.set(canvas.width / 6, canvas.height / 6, 1);
-      return sprite;
+      unlockPathNodes.forEach(id => {
+        const n = nodesById.get(id);
+        if (n) relatedNodes.push(n);
+      });
+      
+      // 动态生成绝对定位 HTML 标签板
+      relatedNodes.forEach(n => {
+        const div = document.createElement('div');
+        div.className = 'html-node-label-panel';
+        div.id = `html-label-${n.id}`;
+        
+        // 定位及层级配置
+        div.style.position = 'absolute';
+        div.style.pointerEvents = 'none';
+        div.style.transform = 'translate(-50%, -100%)'; // 居中挂在三维小球上方
+        div.style.marginTop = '-16px';
+        div.style.zIndex = n.id === selectedNodeId ? '100' : '90';
+        div.style.display = 'none'; // 初始隐藏，在 render 循环中再投影计算显示
+        
+        const conf = SUBJECT_CONFIG[n.subject];
+        const isSelected = n.id === selectedNodeId;
+        const isPrereq = prereqPathNodes.has(n.id);
+        const isUnlock = unlockPathNodes.has(n.id);
+        
+        let highlightColor = conf.color;
+        if (isSelected) {
+          highlightColor = isLightTheme ? '#111827' : '#ffffff';
+        } else if (isPrereq) {
+          highlightColor = isLightTheme ? '#2563eb' : '#60a5fa';
+        } else if (isUnlock) {
+          highlightColor = isLightTheme ? '#ef4444' : '#f87171';
+        }
+        
+        const ageText = `(年龄: ${n.ageRangeStart}-${n.ageRangeEnd}岁)`;
+        const displayName = translationCache.get(n.name) || n.name;
+        
+        // 复刻原有 Hover Tooltip 样式与内容，字号在大屏缩小状态下绝对不变
+        div.innerHTML = `
+          <div style="font-size: 10.5px; color: ${conf.color}; font-weight: bold; margin-bottom: 2px; white-space: nowrap; font-family: var(--font-chinese);">
+            ${conf.cn} · ${n.domain} ${ageText}
+          </div>
+          <div style="font-size: 13.5px; font-weight: bold; color: ${highlightColor}; white-space: nowrap; font-family: var(--font-chinese);">
+            ${displayName}
+          </div>
+        `;
+        
+        container.appendChild(div);
+        n.htmlLabelEl = div;
+      });
     }
 
-    // 高亮关联节点的三维对象定制（小球 + 三维标签）
-    function buildNodeObject(node) {
-      const isSelected = node.id === selectedNodeId;
-      const isPrereq = prereqPathNodes.has(node.id);
-      const isUnlock = unlockPathNodes.has(node.id);
-      const isRelated = isSelected || isPrereq || isUnlock;
+    // 每一帧将高亮节点的 3D 空间坐标投影并转换为网页 2D 绝对定位屏幕坐标
+    function updateHtmlLabelsPosition() {
+      if (!Graph || !selectedNodeId) return;
       
-      if (!selectedNodeId || !isRelated) {
-        return null; // 非关联节点返回 null，使用 3D Graph 默认的高性能球体渲染
-      }
+      const camera = Graph.camera();
+      const renderer = Graph.renderer();
+      if (!camera || !renderer) return;
       
-      let labelColor = SUBJECT_CONFIG[node.subject].color;
-      let nodeColorVal = labelColor;
-      if (isSelected) {
-        nodeColorVal = isLightTheme ? '#111827' : '#ffffff';
-        labelColor = '#ffffff';
-      } else if (isPrereq) {
-        nodeColorVal = '#3b82f6';
-        labelColor = '#60a5fa';
-      } else if (isUnlock) {
-        nodeColorVal = '#ef4444';
-        labelColor = '#f87171';
-      }
-
-      const inCount = incomingEdges.get(node.id).length;
-      const outCount = outgoingEdges.get(node.id).length;
-      const radius = 2.5 + Math.sqrt(inCount + outCount) * 0.8;
+      const relatedNodes = [];
+      const activeSelNode = nodesById.get(selectedNodeId);
+      if (activeSelNode) relatedNodes.push(activeSelNode);
       
-      const group = new THREE.Group();
+      prereqPathNodes.forEach(id => {
+        const n = nodesById.get(id);
+        if (n) relatedNodes.push(n);
+      });
       
-      const sphereGeom = new THREE.SphereGeometry(radius, 16, 16);
-      const sphereMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(nodeColorVal), transparent: true, opacity: 0.95 });
-      const sphereMesh = new THREE.Mesh(sphereGeom, sphereMat);
-      group.add(sphereMesh);
+      unlockPathNodes.forEach(id => {
+        const n = nodesById.get(id);
+        if (n) relatedNodes.push(n);
+      });
       
-      const displayName = translationCache.get(node.name) || node.name;
-      const sprite = createTextLabel(displayName, labelColor);
-      sprite.position.y = radius + 8;
-      group.add(sprite);
+      const widthHalf = renderer.domElement.clientWidth / 2;
+      const heightHalf = renderer.domElement.clientHeight / 2;
       
-      return group;
+      relatedNodes.forEach(n => {
+        if (!n.htmlLabelEl) return;
+        
+        const vector = new THREE.Vector3(n.x, n.y, n.z);
+        vector.project(camera);
+        
+        // 如果节点旋转到了相机后方，立即隐藏以防穿透渲染
+        if (vector.z > 1) {
+          n.htmlLabelEl.style.display = 'none';
+          return;
+        }
+        
+        const x = vector.x * widthHalf + widthHalf;
+        const y = -vector.y * heightHalf + heightHalf;
+        
+        n.htmlLabelEl.style.display = 'block';
+        n.htmlLabelEl.style.left = `${x}px`;
+        n.htmlLabelEl.style.top = `${y}px`;
+      });
     }
 
     // 极坐标圆柱状受力分配算法（用于生成喇叭状/圆锥状的 3D 图谱）
@@ -1689,28 +1736,30 @@
       return force;
     }
 
-    // 星云三维随机散布受力算法（拉向各自的随机星云坐标）
-    function nebulaForce() {
+    // 环状状态圆环体（游泳圈）受力算法（拉向各自的圆环体坐标）
+    function ringForce() {
       let nodes;
       function force(alpha) {
         for (let i = 0, n = nodes.length; i < n; ++i) {
           const node = nodes[i];
-          // 如果没有星云坐标，先初始化一下
-          if (node.nebulaX === undefined) {
-            const nebAngle = Math.random() * Math.PI * 2;
-            const nebPhi = Math.acos(Math.random() * 2 - 1);
-            const nebR = Math.random() * 400 + 80;
-            node.nebulaX = nebR * Math.sin(nebPhi) * Math.cos(nebAngle);
-            node.nebulaY = nebR * Math.cos(nebPhi);
-            node.nebulaZ = nebR * Math.sin(nebPhi) * Math.sin(nebAngle);
+          // 如果没有圆环体坐标，先初始化一下
+          if (node.ringX === undefined) {
+            const R = 320;
+            const rRing = 70;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI * 2;
+            node.ringX = (R + rRing * Math.cos(phi)) * Math.cos(theta);
+            node.ringZ = (R + rRing * Math.cos(phi)) * Math.sin(theta);
+            node.ringY = rRing * Math.sin(phi);
           }
-          const dx = node.nebulaX - node.x;
-          const dy = node.nebulaY - node.y;
-          const dz = node.nebulaZ - node.z;
+          const dx = node.ringX - node.x;
+          const dy = node.ringY - node.y;
+          const dz = node.ringZ - node.z;
           
-          node.vx += dx * alpha * 0.15;
-          node.vy += dy * alpha * 0.15;
-          node.vz += dz * alpha * 0.15;
+          // 强力锁定拉向圆环轨道坐标，因子从 0.15 大幅提高到 0.45，杜绝节点向心坍缩
+          node.vx += dx * alpha * 0.45;
+          node.vy += dy * alpha * 0.45;
+          node.vz += dz * alpha * 0.45;
         }
       }
       force.initialize = _ => nodes = _;
@@ -1725,7 +1774,7 @@
           node.fx = undefined;
           node.fz = undefined;
         } else {
-          // 球体和星云布局：让物理引擎完全自由活动（通过引力/排斥力维持形状）
+          // 球体和环状布局：让物理引擎完全自由活动（通过引力/排斥力维持形状）
           node.fx = undefined;
           node.fy = undefined;
           node.fz = undefined;
@@ -1740,23 +1789,23 @@
         // 龙卷风模式：使用 cylinderForce 锥状约束，开启排斥力与普通连线力
         Graph.d3Force('cylinder', cylinderForce());
         Graph.d3Force('radial', null);
-        Graph.d3Force('nebula', null);
+        Graph.d3Force('ring', null);
         Graph.d3Force('charge').strength(-40);
         Graph.d3Force('link').distance(40).strength(0.3);
       } else if (currentLayout === 'sphere') {
         // 球体模式：使用自定义的 radialForce 拉向球面，增强排斥力，减弱连线拉力
         Graph.d3Force('cylinder', null);
         Graph.d3Force('radial', radialForce(350));
-        Graph.d3Force('nebula', null);
+        Graph.d3Force('ring', null);
         Graph.d3Force('charge').strength(-60); // 增加排斥力，让它们分布得更均匀
         Graph.d3Force('link').distance(50).strength(0.08); // 极大减弱连线引力，防止球体崩溃
-      } else if (currentLayout === 'nebula') {
-        // 星云模式：使用自定义的 nebulaForce 拉向随机散布点，适中排斥力和弱连线力
+      } else if (currentLayout === 'ring') {
+        // 环状（游泳圈）模式：使用自定义的 ringForce 强力约束到圆环体上，极度微弱的连线拉力防止将粒子扯向中心，增强排斥力以腾空圆心
         Graph.d3Force('cylinder', null);
         Graph.d3Force('radial', null);
-        Graph.d3Force('nebula', nebulaForce());
-        Graph.d3Force('charge').strength(-25);
-        Graph.d3Force('link').distance(65).strength(0.12); // 若即若离的弱连线力，形成丝状聚簇
+        Graph.d3Force('ring', ringForce());
+        Graph.d3Force('charge').strength(-70); // 大幅提高排斥力，清理中心区域
+        Graph.d3Force('link').distance(75).strength(0.015); // 极弱连线拉力，避免拖向中心
       }
     }
 
@@ -1855,9 +1904,13 @@
         .linkDirectionalParticleSpeed(0.015)
         .showNavInfo(false)
         .backgroundColor(isLightTheme ? '#f3f4f6' : '#030712')
-        .nodeThreeObject(buildNodeObject) // 挂载自定义节点渲染，绘制高亮文字标签
         .onNodeClick(node => {
           selectNode(node);
+        })
+        .onBackgroundClick(() => {
+          if (selectedNodeId) {
+            closeDetailPanel();
+          }
         });
 
       // 调整相机角度，初始拉远2倍距离以使整体点云在视角中缩小一半，看起来更开阔精细
@@ -1898,6 +1951,11 @@
               z: rXZ * Math.cos(rotationAngle)
             }, null, 0); // 0ms 瞬间设置相机坐标
           }
+        }
+
+        // 实时更新网页级 HTML 悬浮标签的 3D 投影坐标，实现大小固定、清晰可读
+        if (selectedNodeId) {
+          updateHtmlLabelsPosition();
         }
       }
       animate();
@@ -1944,17 +2002,22 @@
       // 2. 更新 3D 图谱样式 (会自动读取选中的高亮集合)
       Graph.nodeColor(Graph.nodeColor());
       Graph.nodeVal(Graph.nodeVal());
-      Graph.nodeThreeObject(Graph.nodeThreeObject()); // 强制刷新节点三维对象，展示关联文字标签
       Graph.linkWidth(Graph.linkWidth());
       Graph.linkColor(Graph.linkColor());
       Graph.linkDirectionalParticles(Graph.linkDirectionalParticles());
 
-      // 3. 相机平滑聚焦到该节点，保持1300的距离，使其只扭转对齐到正前面聚焦而不拉近放大
-      const distance = 1300;
-      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+      // 生成/更新 2D HTML 悬浮框文本
+      updateHtmlLabels();
+
+      // 3. 相机平滑聚焦到该节点，维持当前的缩放视距距离，只在球面上进行方向旋转对齐
+      const currentCameraPos = Graph.cameraPosition();
+      const currentDistance = Math.hypot(currentCameraPos.x, currentCameraPos.y, currentCameraPos.z) || 1300;
+      const nodeDistance = Math.hypot(node.x, node.y, node.z) || 1e-6;
+      const distRatio = currentDistance / nodeDistance;
+      
       Graph.cameraPosition(
-        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // 相机目标位置
-        { x: 0, y: 0, z: 0 }, // 保持镜头朝向场景中心(0,0,0)不变，以防止 OrbitControls 旋转轴轴心点变动
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // 维持视距对齐到节点延长线方向
+        { x: 0, y: 0, z: 0 }, // 保持朝向整个图谱的几何中心(0,0,0)不变，以防止 OrbitControls 旋转轴漂移
         1500 // 过渡时间 ms
       );
 
@@ -2035,11 +2098,14 @@
       prereqPathNodes.clear();
       unlockPathNodes.clear();
 
+      // 清空 HTML 文字标签
+      const container = document.getElementById('html-labels-container');
+      if (container) container.innerHTML = '';
+
       // 恢复图谱初始色
       if (Graph) {
         Graph.nodeColor(Graph.nodeColor());
         Graph.nodeVal(Graph.nodeVal());
-        Graph.nodeThreeObject(Graph.nodeThreeObject()); // 强制恢复所有节点为默认球形对象（清空文字标签）
         Graph.linkWidth(Graph.linkWidth());
         Graph.linkColor(Graph.linkColor());
         Graph.linkDirectionalParticles(Graph.linkDirectionalParticles());
@@ -2196,10 +2262,8 @@
         document.getElementById('translate-badge').innerText = '⚠️ 汉化服务受限';
       }
 
-      // 翻译流程结束后，强制刷新三维自定义节点，以将高亮标签的英文更新为中文
-      if (Graph) {
-        Graph.nodeThreeObject(Graph.nodeThreeObject());
-      }
+      // 翻译流程结束后，强制刷新 HTML 文字悬浮标签，以将高亮标签的英文更新为中文
+      updateHtmlLabels();
     }
 
     // 设置事件处理器 (搜索、关闭详情等)
@@ -2360,11 +2424,13 @@
       <svg viewBox="0 0 24 24"><path d="M2 3h20M4 7h16M6 11h12M9 15h6M11 19h2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
       <span>龙卷风</span>
     </button>
-    <button class="layout-btn" data-layout="nebula">
-      <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 1 9 9 9 9 0 0 1-9 9 9 9 0 0 1-9-9 9 9 0 0 1 9-9z" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" fill="none"/><circle cx="12" cy="12" r="4" fill="currentColor"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1" fill="currentColor"/><circle cx="8" cy="16" r="1" fill="currentColor"/></svg>
-      <span>星云</span>
+    <button class="layout-btn" data-layout="ring">
+      <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6" stroke="currentColor" stroke-width="2" fill="none"/><ellipse cx="12" cy="12" rx="5" ry="3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      <span>环状</span>
     </button>
   </div>
+  <!-- HTML 悬浮框容器 (选中节点后在三维球体上方展示固定字号标签) -->
+  <div id="html-labels-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; overflow: hidden;"></div>
 
 </body>
 </html>
