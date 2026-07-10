@@ -1,6 +1,6 @@
 {
   "name": "marble-taxonomy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An open, graph-structured taxonomy of primary/elementary learning.",
   "private": true,
   "type": "module",
