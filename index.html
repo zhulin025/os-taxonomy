@@ -12,7 +12,7 @@
 
   <header class="topbar glass">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true">✦</span>
+      <img class="brand-mark" src="./assets/xhs-icon.png" alt="" aria-hidden="true">
       <div>
         <h1 data-i18n="brandTitle">儿童知识星图</h1>
         <p data-i18n="brandSubtitle">4–13 岁学习路径 · 完全离线</p>
@@ -128,12 +128,12 @@
   </aside>
 
   <nav class="layout-switch glass" aria-label="图谱形态">
-    <button type="button" data-layout="sphere"><span aria-hidden="true">◉</span><b data-i18n="sphere">星球</b></button>
-    <button type="button" data-layout="tornado" class="active"><span aria-hidden="true">⌁</span><b data-i18n="growth">成长</b></button>
+    <button type="button" data-layout="sphere" class="active"><span aria-hidden="true">◉</span><b data-i18n="sphere">星球</b></button>
+    <button type="button" data-layout="tornado"><span aria-hidden="true">⌁</span><b data-i18n="growth">成长</b></button>
     <button type="button" data-layout="ring"><span aria-hidden="true">◎</span><b data-i18n="knowledgeRing">知识环</b></button>
   </nav>
 
-  <div class="gesture-tip" id="gesture-tip" data-i18n="gestureTip">拖动旋转 · 双指缩放 · 点击光点</div>
+  <div class="gesture-tip" id="gesture-tip" data-i18n="gestureTip">点击高亮关系 · 再次点击查看详情</div>
   <button id="license-open" class="license-open" type="button" data-i18n="dataLicense">数据来源与许可</button>
   <div id="loading" class="loading"><span></span><p data-i18n="loading">正在点亮知识星图…</p></div>
   <div id="error-state" class="error-state glass" hidden>

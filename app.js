@@ -6,14 +6,14 @@
     dependencies: globalThis.XHS_DEPENDENCIES
   };
   const SUBJECTS = {
-    'Mathematics': { zh: '数学', en: 'Mathematics', color: '#4b91ff' },
-    'Science': { zh: '科学', en: 'Science', color: '#25c7d9' },
-    'English': { zh: '英语', en: 'English', color: '#f05a9f' },
-    'History': { zh: '历史', en: 'History', color: '#f3a536' },
-    'Personal & Social Development': { zh: '社会成长', en: 'Personal & Social', color: '#ff6673' },
-    'Life Skills': { zh: '生活技能', en: 'Life Skills', color: '#b36df0' },
-    'Computing': { zh: '计算机', en: 'Computing', color: '#32c98b' },
-    'Learning to Learn': { zh: '学会学习', en: 'Learning to Learn', color: '#8896ff' }
+    'Mathematics': { zh: '数学', en: 'Mathematics', color: '#3b82f6' },
+    'Science': { zh: '科学', en: 'Science', color: '#06b6d4' },
+    'English': { zh: '英语', en: 'English', color: '#ec4899' },
+    'History': { zh: '历史', en: 'History', color: '#f59e0b' },
+    'Personal & Social Development': { zh: '社会成长', en: 'Personal & Social', color: '#ef4444' },
+    'Life Skills': { zh: '生活技能', en: 'Life Skills', color: '#a855f7' },
+    'Computing': { zh: '计算机', en: 'Computing', color: '#10b981' },
+    'Learning to Learn': { zh: '学会学习', en: 'Learning to Learn', color: '#818cf8' }
   };
   const TYPES = {
     CONCEPTUAL: { zh: '概念', en: 'Conceptual' },
@@ -33,7 +33,7 @@
       topics: '知识点', relations: '依赖关系', ageLevels: '年龄层', prerequisites: '前置知识',
       unlocks: '后续解锁', currentTopic: '当前知识', familyQuestion: '亲子提问', masteryEvidence: '掌握证据',
       curriculumStandards: '课程标准', sphere: '星球', growth: '成长', knowledgeRing: '知识环',
-      gestureTip: '拖动旋转 · 双指缩放 · 点击光点', dataLicense: '数据来源与许可', loading: '正在点亮知识星图…',
+      gestureTip: '点击高亮关系 · 再次点击查看详情', dataLicense: '数据来源与许可', loading: '正在点亮知识星图…',
       errorTitle: '当前设备无法启动 3D 图谱', errorCopy: '请确认小红书已更新到较新版本后重试。',
       attribution: '署名说明', licenseTitle: '数据来源与许可',
       licenseSource: 'Marble 技能分类体系（v1）· © Generative Spark, Inc.（Marble）。',
@@ -52,7 +52,7 @@
       topics: 'Topics', relations: 'Dependencies', ageLevels: 'Age Levels', prerequisites: 'Prerequisites',
       unlocks: 'Unlocks', currentTopic: 'Current Topic', familyQuestion: 'Family Prompt', masteryEvidence: 'Evidence of Mastery',
       curriculumStandards: 'Curriculum Standards', sphere: 'Sphere', growth: 'Growth', knowledgeRing: 'Knowledge Ring',
-      gestureTip: 'Drag to rotate · Pinch to zoom · Tap a light', dataLicense: 'Data Sources & License', loading: 'Lighting the knowledge map…',
+      gestureTip: 'Tap to reveal paths · Tap again for details', dataLicense: 'Data Sources & License', loading: 'Lighting the knowledge map…',
       errorTitle: '3D map is unavailable on this device', errorCopy: 'Please update Xiaohongshu and try again.',
       attribution: 'ATTRIBUTION', licenseTitle: 'Data Sources & License',
       licenseSource: 'Marble Skill Taxonomy (v1) · © Generative Spark, Inc. (Marble).',
@@ -73,9 +73,10 @@
     activeAges: new Set([4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),
     activeMask: [],
     selectedId: null,
+    detailOpen: false,
     prereqIds: new Set(),
     unlockIds: new Set(),
-    layout: 'tornado',
+    layout: 'sphere',
     currentPositions: null,
     targetPositions: null,
     layouts: {},
@@ -87,9 +88,9 @@
     moved: false,
     lastInteraction: 0,
     pointers: new Map(),
-    pinchDistance: 0
-    ,language: 'zh-CN'
-    ,languageCache: new Map()
+    pinchDistance: 0,
+    language: 'zh-CN',
+    languageCache: new Map()
   };
 
   const ui = {};
@@ -148,8 +149,8 @@
       return edge;
     }).filter(edge => Number.isInteger(edge.sourceIndex) && Number.isInteger(edge.targetIndex));
     buildLayouts();
-    state.currentPositions = state.layouts.tornado.slice();
-    state.targetPositions = state.layouts.tornado.slice();
+    state.currentPositions = state.layouts.sphere.slice();
+    state.targetPositions = state.layouts.sphere.slice();
   }
 
   function buildLayouts() {
@@ -175,7 +176,7 @@
       const tornadoAngle = i * .39 + subjectIndex * .76;
       const tornadoRadius = 36 + ageT * 350 + subjectIndex * 2.4;
       tornado[i * 3] = Math.cos(tornadoAngle) * tornadoRadius;
-      tornado[i * 3 + 1] = (topic.age - 8.5) * 82;
+      tornado[i * 3 + 1] = (topic.age - 8.5) * 82 - 110;
       tornado[i * 3 + 2] = Math.sin(tornadoAngle) * tornadoRadius;
 
       const theta = i * golden + subjectIndex * .35;
@@ -332,7 +333,7 @@
       ui['total-topic-count'].textContent = state.topics.length.toLocaleString(locale());
       ui['total-edge-count'].textContent = state.edges.length.toLocaleString(locale());
       applyFilters();
-      if (state.selectedId) showDetail(state.byId.get(state.selectedId));
+      if (state.selectedId && state.detailOpen) showDetail(state.byId.get(state.selectedId));
     } catch (error) {
       ui['error-state'].hidden = false;
     } finally {
@@ -495,15 +496,23 @@
   function selectTopic(id) {
     const topic = state.byId.get(id);
     if (!topic || !state.activeMask[topic.index]) return;
-    state.selectedId = id;
-    calculatePaths(id);
-    showDetail(topic);
+    if (state.selectedId !== id) {
+      state.selectedId = id;
+      state.detailOpen = false;
+      calculatePaths(id);
+      ui['detail-view'].hidden = true;
+      ui['overview-view'].hidden = false;
+      ui['info-panel'].classList.remove('has-detail');
+    } else if (!state.detailOpen) {
+      showDetail(topic);
+    }
     updateColors();
     markInteraction();
   }
 
   function closeDetail() {
     state.selectedId = null;
+    state.detailOpen = false;
     state.prereqIds.clear();
     state.unlockIds.clear();
     ui['detail-view'].hidden = true;
@@ -514,6 +523,7 @@
 
   function showDetail(topic) {
     const config = SUBJECTS[topic.subject];
+    state.detailOpen = true;
     ui['overview-view'].hidden = true;
     ui['detail-view'].hidden = false;
     ui['info-panel'].classList.add('has-detail');
@@ -618,8 +628,10 @@
       '    vec2 delta = gl_PointCoord - vec2(0.5);',
       '    float radius = dot(delta, delta);',
       '    if (radius > 0.25) discard;',
-      '    float glow = 1.0 - smoothstep(0.04, 0.25, radius);',
-      '    gl_FragColor = vec4(v_color.rgb + glow*0.28, v_color.a);',
+      '    float edge = 1.0 - smoothstep(0.17, 0.25, radius);',
+      '    float glow = 1.0 - smoothstep(0.03, 0.24, radius);',
+      '    vec3 brightColor = min(vec3(1.0), v_color.rgb * (1.08 + glow*0.30));',
+      '    gl_FragColor = vec4(brightColor, v_color.a * edge);',
       '  } else {',
       '    gl_FragColor = v_color;',
       '  }',
@@ -664,10 +676,10 @@
       const offset = index * 4;
       const active = state.activeMask[index];
       let rgb = hexToRgb(SUBJECTS[topic.subject].color);
-      let alpha = active ? (dimOthers ? .14 : .82) : 0;
+      let alpha = active ? (dimOthers ? .075 : .97) : 0;
       if (topic.id === state.selectedId) { rgb = [1, 1, 1]; alpha = 1; }
-      else if (state.prereqIds.has(topic.id)) { rgb = [.22, .61, 1]; alpha = active ? .96 : 0; }
-      else if (state.unlockIds.has(topic.id)) { rgb = [1, .28, .43]; alpha = active ? .96 : 0; }
+      else if (state.prereqIds.has(topic.id)) { rgb = [.231, .51, .965]; alpha = active ? 1 : 0; }
+      else if (state.unlockIds.has(topic.id)) { rgb = [.937, .267, .267]; alpha = active ? 1 : 0; }
       nodeColors[offset] = rgb[0];
       nodeColors[offset + 1] = rgb[1];
       nodeColors[offset + 2] = rgb[2];
@@ -691,11 +703,11 @@
       const sourceId = state.topics[edge.sourceIndex].id;
       const targetId = state.topics[edge.targetIndex].id;
       let rgb = neutral;
-      let alpha = state.selectedId ? .025 : .105;
+      let alpha = state.selectedId ? .008 : .052;
       if (state.selectedId && selectedSetBefore.has(sourceId) && selectedSetBefore.has(targetId)) {
-        rgb = [.22, .61, 1]; alpha = .7;
+        rgb = [.231, .51, .965]; alpha = .98;
       } else if (state.selectedId && selectedSetAfter.has(sourceId) && selectedSetAfter.has(targetId)) {
-        rgb = [1, .28, .43]; alpha = .7;
+        rgb = [.937, .267, .267]; alpha = .98;
       }
       const sourceOffset = edge.sourceIndex * 3;
       const targetOffset = edge.targetIndex * 3;
@@ -778,7 +790,7 @@
     gl.uniform1f(gl.getUniformLocation(program, 'u_zoom'), state.zoom);
     gl.uniform1f(gl.getUniformLocation(program, 'u_aspect'), canvas.width / canvas.height);
     gl.uniform1f(gl.getUniformLocation(program, 'u_camera'), state.camera);
-    gl.uniform1f(gl.getUniformLocation(program, 'u_pointSize'), innerWidth <= 820 ? 7.5 : 6.2);
+    gl.uniform1f(gl.getUniformLocation(program, 'u_pointSize'), innerWidth <= 820 ? 8.8 : 7.2);
   }
 
   function bindCanvasEvents(canvas) {

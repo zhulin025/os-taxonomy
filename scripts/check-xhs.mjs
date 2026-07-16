@@ -8,6 +8,7 @@ const files = [
   'index.html',
   'styles.css',
   'app.js',
+  'assets/xhs-icon.png',
   'data/dependencies.js',
   'data/topics.en.js',
   'data/topics.zh-CN.js'

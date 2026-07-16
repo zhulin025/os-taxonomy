@@ -84,15 +84,12 @@ button { color: inherit; }
 
 .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .brand-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 38px;
   height: 38px;
   flex: 0 0 auto;
   border-radius: 13px;
-  color: #fff;
-  font-size: 19px;
-  background: linear-gradient(145deg, #448aff, #7d56e8);
+  object-fit: cover;
   box-shadow: 0 0 24px rgba(68, 138, 255, 0.42);
 }
 .brand h1 { margin: 0; font-size: 17px; letter-spacing: .04em; white-space: nowrap; }
