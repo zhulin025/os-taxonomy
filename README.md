@@ -1,113 +1,93 @@
-# Marble Skill Taxonomy & 3D 课程关系图谱可视化系统
+# 儿童知识星图 · 小红书小工具版
 
-这是一个关于**儿童在小学/初中阶段学习内容**的开源、结构化分类图谱项目。该项目将庞杂的国家教育大纲碎片化为最小教学单元（“微观主题”），构建了前置条件依赖图，并与国家课程标准进行对齐。
+这是 [`zhulin025/os-taxonomy`](https://github.com/zhulin025/os-taxonomy) 的小红书小工具适配分支，面向 4–13 岁儿童与家长，以完全离线的 WebGL 3D 星图展示 1,590 个知识点和 3,221 条前置依赖关系。
 
-此外，本项目基于此数据集，在本地构建了一个**完全离线可用、精美绝伦的 3D 旋转星空粒子可视化交互展示系统**。
+## 版本与分支
 
-> **系统版本：** `v1.1` · **数据集版本：** `v1` · **微观知识点 (节点)：** 1,590 · **前置依赖 (边)：** 3,221 · **学科分类：** 8 大学科
+| 分支 | 用途 |
+| --- | --- |
+| [`main`](https://github.com/zhulin025/os-taxonomy/tree/main) | 原始线上 Web 版 |
+| [`xiaohongshu-tool`](https://github.com/zhulin025/os-taxonomy/tree/xiaohongshu-tool) | 小红书小工具离线适配版 |
 
----
-![页面截图](media/layout.png)
-![效果展示](media/layout.GIF)
+两个版本彼此独立。小红书版的界面、离线数据包和平台校验脚本只维护在 `xiaohongshu-tool` 分支，不会改变线上 `main` 分支。
 
-## 3D 可视化系统核心功能与特色
+## 直接上传
 
-本项目通过 3D 力导向引擎将原本静态 of JSON 依赖关系数据，在网页端渲染为具有未来科技感的 3D 星空粒子点云。
+已验证的上传包位于项目根目录：
 
-1. **粒子布局多形态切换 (v1.1 特色)**：
-   - 提供**球体**、**龙卷风**、**环状**三种粒子力学分布形态。
-   - **球体 (Sphere)**：所有粒子通过三维球形径向力和排斥力分布于三维球面上，呈现纯科技感的天体球壳结构。
-   - **龙卷风 (Tornado)**：基于儿童年龄层级分层（底部4岁凝聚至 `15px`，顶部13岁张开）的圆锥状布局，可体现学习进阶路线。
-   - **环状 (Ring)**：所有粒子通过自定义的游泳圈（圆环体 Torus）力学定位公式与强约束力，规则、镂空地排布于圆环形游泳圈的管壁表面，在自转时形成精美空心的 3D 环状，在形状轮廓上与球体、龙卷风彻底区隔。
-   - 切换过程伴随着力导向物理引擎的**平滑过渡动画**，且**始终维持当前的缩放与旋转视角**（不拉近/不改变观察中心点）。
+- [`儿童知识星图-xhs-tool.zip`](儿童知识星图-xhs-tool.zip)
 
-2. **细粒度年龄 3D 分层与锥形点云 (Cylinder Force Map)**：
-   - **Y 轴高度**：对应儿童学习的年龄段（自下而上高度层叠分布，底部是 4 岁，顶部是 13 岁）。
-   - **XZ 平面半径**：利用 D3 极坐标圆柱状受力分配算法，使不同年龄的粒子散开，且底部（4岁）半径凝聚收缩至 `15px`，顶部（13岁）张开，形成极其精致的纵深旋转圆锥。
-   - **全自动匀速自转**：场景启用 OrbitControls 慢速自转（`0.0012` 弧度/帧），在静态下依旧光影流转，空间立体感极强。
+ZIP 内以 `index.html` 为根入口，仅包含平台支持的 HTML、CSS 和 JavaScript 文件。上传后仍需在小红书创作服务平台中自行完成资料审核与最终提交。
 
-3. **白天 / 黑夜双主题无缝切换 (Theme Toggle)**：
-   - 支持一键切换白天（明亮）和黑夜（深色宇宙）模式。
-   - **白天模式 (Light Theme)**：背景切换为柔和高对比的淡灰底色（`#f3f4f6`），面板呈现毛玻璃高透白色拟态质感。
-   - **3D 引擎自适应重绘**：切换主题时 3D 视口背景、未激活节点（白天为半透明淡色）及未激活网格连线将同步刷新。
+## 小工具版能力
 
-4. **双向依赖流光动画与悬浮三维标签交互**：
-   - 在 3D 空间中点击任意主题，相机会以平滑的过渡平移并聚焦（保持镜头看点为原点，不发生旋转轴心漂移）。
-   - **前置依赖链 (Prerequisites)**：当前节点所有直接与间接的前置节点高亮为冷蓝色，连线上产生指向当前节点的蓝色流动光点动画。
-   - **后继解锁链 (Unlocks)**：所有受当前节点解锁的未来主题高亮为暖红色，连线产生向外的红色流动光点动画。
-   - **三维文字悬浮标签**：点击节点后，该节点及其所有关联的前置、后继节点上方会悬浮展现带圆角半透明黑色背景的三维标签，且随着 AI 汉化完成，标签也会实时转为中文。
+- 默认显示简体中文，可通过右上角 `EN` / `中` 在中英文之间切换。
+- 中文与英文数据均预编译在包内，运行时不请求翻译接口或其他网络资源。
+- 支持知识点搜索、学科筛选、4–13 岁年龄筛选和知识依赖关系查看。
+- 提供“星球”“成长”“知识环”三种 WebGL 图谱布局。
+- 支持单指拖动旋转、双指缩放、点按知识点及明暗主题切换。
+- 已针对小红书 App 顶部原生按钮区域和底部安全区优化移动端布局。
+- 不使用 `fetch`、XHR、外部脚本、iframe、WASM、Worker、`eval` 或动态代码执行。
 
-5. **在线 AI 汉化翻译系统 (双语对照)**：
-   - 选中任意节点，系统会自动使用 Google 免 Key 接口在后台瞬间将英文原文的“名称”、“描述”、“达标证据”和“评估问答”翻译为中文，并以优雅的排版双语对照展示。
-   - 针对翻译接口，本系统增加了 1.5 秒超时控制和本地常用词典降级垫底，确保无网或弱网环境下依然能够秒开且具备基本汉化能力。
+更完整的平台适配边界与上传资料见 [`XIAOHONGSHU_ADAPTATION.md`](XIAOHONGSHU_ADAPTATION.md)。
 
-6. **多模态学科与年龄段过滤**：
-   - **学科过滤器**：左侧显示 8 大学科的实时节点数量，点击可瞬间隐藏/开启对应分类。
-   - **年龄段过滤器**：提供 4-13 岁细粒度的圆圈数字刻度盘，支持高亮和多选，并配有快捷区间筛选。
-
-7. **100% 静态资源本地化**：
-   - 彻底移除了外部 Google 字体和 slow-loading 的 `unpkg.com` 库依赖，全部 `three.min.js` 与 `3d-force-graph.min.js` 依赖库均离线保存在本地 `lib/` 目录。系统在无网络环境下也能实现秒开。
-
----
-
-## 快速运行与使用方式
-
-### 1. 运行本地 Web 服务器
-
-本项目为纯前端静态应用，但由于需要异步加载本地的 JSON 数据（跨域安全限制），您必须在项目根目录启动一个本地 Web 服务器：
+## 本地预览
 
 ```bash
-# 使用 Python 启动本地 Web 服务器 (内置端口自动避让)
 python3 server.py
 ```
 
-- `server.py` 在运行后默认会监听 `8000` 端口。
-- **端口避让**：若 `8000` 端口已被其他服务占用，脚本将自动探测并依次绑定至 `8001` - `8099` 之间可用的第一个端口，极大增强了启动稳定性。
+按照终端提示，在浏览器中打开本地地址即可。`server.py` 默认从 `8000` 端口开始寻找可用端口。
 
-启动成功后，在终端提示的端口中打开浏览器访问即可（例如 [http://localhost:8001/](http://localhost:8001/)）。
+## 数据文件
 
-### 2. 使用说明
+- [`data/topics.json`](data/topics.json)：英文知识点源数据。
+- [`data/topics.zh-CN.json`](data/topics.zh-CN.json)：按相同 ID 对齐的完整简体中文知识点数据。
+- [`data/dependencies.json`](data/dependencies.json)：知识点前置依赖关系。
+- `data/topics.en.js`、`data/topics.zh-CN.js`、`data/dependencies.js`：供小工具离线运行的构建产物。
+- [`data/curriculum-standards.json`](data/curriculum-standards.json)：课程标准数据。
+- [`data/clusters.json`](data/clusters.json)：学科与年龄段聚类数据。
 
-- **3D 漫游**：在屏幕上**按住左键拖拽**可以全角度旋转图谱；**右键拖拽**可以移动图谱位置；使用**鼠标滚轮**可放大/缩小视角。
-- **关键字搜索**：右侧顶部输入框支持中文拼音、中文以及英文名称模糊匹配联想，在列表中点击即可平滑定位该节点。
-- **主题切换**：点击左上角 LOGO 右侧的 ☀️/🌙 按钮可在白天与黑夜模式之间随意切换。
-- **重置视图**：点击右侧详情卡片顶部的 `✕`（关闭详情），即可收起右侧卡片，恢复图谱全景展示并重置高亮状态。
+中文数据保留英文版的 ID、类型、学科、年龄范围、课程标准代码和证据条数，只翻译页面实际展示的主题领域、名称、描述、亲子提问与掌握证据。
 
----
-
-## 数据集结构说明
-
-所有结构化数据文件以 JSON 格式存储在 [`data/`](data/) 目录中：
-
-- [`data/topics.json`](data/topics.json)：图谱中的所有**节点**数据（包括主题名称、分类、描述、适用年龄、达标考核证据标准等）。
-- [`data/dependencies.json`](data/dependencies.json)：图谱中的所有**边**数据（定义 `topicId` 依赖于哪一个 `prerequisiteId`）。
-- [`data/curriculum-standards.json`](data/curriculum-standards.json)：对齐的国家课程标准详情（如 CCSS, NGSS, UK-NC 等）。
-- [`data/clusters.json`](data/clusters.json)：各个学科及年龄段的亲子大纲汇总。
-- [`data/manifest.json`](data/manifest.json)：数据集的校验指纹与统计数据。
-
-### 数据完整性校验
-
-如果您修改了数据文件，可以运行以下命令来校验图谱的引用完整性和数据合法性：
+## 构建与验证
 
 ```bash
-# 使用 Node.js 校验数据合法性与哈希指纹
-node scripts/validate.mjs
+# 校验原始数据引用与校验和
+npm run validate
+
+# 校验中英文 ID、结构、占位符和证据条数一致
+npm run validate:zh
+
+# 重新生成中英文离线 JavaScript 数据包
+npm run build:xhs-data
+
+# 扫描小红书平台不支持的 API 与资源引用
+npm run check:xhs
 ```
 
----
+生成上传 ZIP 时只应包含：
 
-## 开源授权协议与版权声明
+```text
+index.html
+styles.css
+app.js
+data/dependencies.js
+data/topics.en.js
+data/topics.zh-CN.js
+```
 
-本项目的数据集与代码库采用**多重授权协议 (Multi-Licensed)** 授权。请在进行分发或商业使用前仔细阅读：
+## 小红书物料
 
-1. **数据库结构与关系**：采用 [**ODbL 1.0 (Open Data Commons Open Database License)**](LICENSE) 许可发布。允许自由分享、修改和进行商业化使用。但任何基于此数据库结构进行的二次开发与扩展（Derivative Databases），也必须强制开源并保持 ODbL 协议；如果仅将图谱作为产品或应用的底层数据（Produced Work），则不需要开源您的产品。
-2. **Marble 创作的文本内容**：包括主题的 `description`、`name`、`evidence` 证据、`assessmentPrompt` 评测问答以及前置依赖的 `reason` 原因等，采用 [**CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International)**](LICENSE-CONTENT) 许可发布（同样要求署名 + 相同方式共享）。
-3. **`curriculum-standards.json` 课程标准数据**：版权归属于各国的国家教育部及起草标准机构（非 Marble 所有），各数据标准分别遵循其独立上游的许可。
+- `assets/xhs-icon.png`：小工具图标。
+- `assets/xhs-icon.svg`：图标矢量源文件。
+- `assets/xhs-preview-mobile.png`：移动端预览图。
 
-### 归属声明（Attribution）
+## 数据来源与许可
 
-根据 ODbL 1.0 与 CC BY-SA 4.0 协议要求，任何使用、分发或衍生本图谱项目的作品**必须包含以下版权信息及声明**：
+Marble Skill Taxonomy (v1) · © Generative Spark, Inc. (Marble) · <https://withmarble.com>
 
-> Marble Skill Taxonomy (v1) · © Generative Spark, Inc. (Marble) · <https://withmarble.com> · licensed under ODbL 1.0 (database) and CC BY-SA 4.0 (content).
-
-同时需保留 [PROVENANCE.md](PROVENANCE.md) 中的国家标准上游版权声明。如在学术或工程报告中引用，请参考 [CITATION.cff](CITATION.cff) 的标准文献格式。
+- 数据库结构与关系：ODbL 1.0，详见 [`LICENSE`](LICENSE)。
+- Marble 文本内容及其翻译：CC BY-SA 4.0，详见 [`LICENSE-CONTENT`](LICENSE-CONTENT)。
+- 课程标准版权归相应教育机构所有，完整来源见 [`PROVENANCE.md`](PROVENANCE.md)。
+- 学术或工程引用格式见 [`CITATION.cff`](CITATION.cff)。

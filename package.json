@@ -7,6 +7,10 @@
   "license": "(ODbL-1.0 AND CC-BY-SA-4.0)",
   "homepage": "https://withmarble.com",
   "scripts": {
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "validate:zh": "node scripts/validate-translations.mjs",
+    "translate:zh": "node scripts/translate-topics-zh.mjs",
+    "build:xhs-data": "node scripts/build-xhs-data.mjs",
+    "check:xhs": "node scripts/check-xhs.mjs"
   }
 }

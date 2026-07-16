@@ -3,3 +3,4 @@ node_modules/
 *.log
 .env
 .env.*
+data/topics.zh-CN.cache.json
